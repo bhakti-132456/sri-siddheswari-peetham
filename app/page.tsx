@@ -75,10 +75,10 @@ export default function HomePage() {
         </div>
 
         {/* Main content */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center animate-scale-in">
           <button
             onClick={handleEnterSite}
-            className="group relative bg-white rounded-full p-8 shadow-2xl divine-glow hover-lift cursor-pointer border-4 border-amber-400 transition-all duration-500"
+            className="group relative bg-white/90 backdrop-blur-sm rounded-full p-8 shadow-depth-3 animate-breathe cursor-pointer border-4 border-amber-400 transition-all duration-500 hover:scale-105"
           >
             {/* Outer glow ring */}
             <div className="absolute -inset-4 rounded-full border-2 border-amber-300/50 pulse-glow" />
@@ -86,15 +86,19 @@ export default function HomePage() {
               className="absolute -inset-8 rounded-full border border-amber-200/30 pulse-glow"
               style={{ animationDelay: "1s" }}
             />
+            <div
+              className="absolute -inset-12 rounded-full border border-amber-100/20 pulse-glow"
+              style={{ animationDelay: "2s" }}
+            />
 
             <img
               src="/logo-nobg.png"
               alt="Sri Siddheswari Peetham"
-              className="w-48 h-48 md:w-64 md:h-64 object-contain transition-transform duration-500 group-hover:scale-110"
+              className="w-48 h-48 md:w-64 md:h-64 object-contain transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
             />
           </button>
 
-          <p className="mt-8 text-amber-700 font-medium text-lg animate-fade-in animation-delay-300">Click to Enter</p>
+          <p className="mt-8 text-amber-700 font-medium text-lg animate-fade-slide-up" style={{ animationDelay: "0.3s" }}>Click to Enter</p>
         </div>
       </div>
     )
@@ -103,16 +107,19 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen pt-20">
+      <main className="min-h-screen pt-0 md:pt-20">
         {/* Hero Section - Enhanced with ornate elements */}
-        <section className="relative h-[650px] sm:h-[700px] lg:h-[700px] overflow-hidden -mt-20">
+        <section className="relative h-[650px] sm:h-[700px] lg:h-[700px] overflow-hidden mt-0 md:-mt-20">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <img
-              src="/images/website-20hero.webp"
-              alt="Spiritual leaders of Sri Siddheswari Peetham"
-              className="h-full w-full object-cover object-center"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/portrait-hero-mobile.png" />
+              <img
+                src="/images/website-20hero.webp"
+                alt="Spiritual leaders of Sri Siddheswari Peetham"
+                className="h-full w-full object-cover object-top md:object-center"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent sm:from-black/80 sm:via-black/50 lg:from-black/70 lg:via-black/35 lg:to-transparent" />
           </div>
 
@@ -185,8 +192,8 @@ export default function HomePage() {
                 type: "image",
               },
             ].map((card, i) => (
-              <FadeUp key={card.title} delay={50 * i}>
-                <Link href={card.href} className="group block temple-card overflow-hidden hover-lift">
+              <FadeUp key={card.title} delay={100 * i}>
+                <Link href={card.href} className="group block temple-card-modern overflow-hidden">
                   <div className="relative aspect-square w-full overflow-hidden">
                     {card.type === "video" ? (
                       <video
@@ -195,29 +202,27 @@ export default function HomePage() {
                         loop
                         muted
                         playsInline
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                       />
                     ) : (
                       <img
                         src={card.img || "/placeholder.svg"}
                         alt={`${card.title} visual`}
-                        className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110`}
+                        className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                       />
                     )}
-                    {/* Hover overlay with golden glow */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="p-5 bg-gradient-to-b from-amber-50 to-white">
+                  <div className="p-5 bg-gradient-to-b from-amber-50 to-white relative">
                     <h3
-                      className="font-serif text-xl text-amber-900"
+                      className="font-serif text-xl text-amber-900 transition-colors duration-300 group-hover:text-amber-700"
                       style={{ WebkitTextFillColor: "#78350f", background: "none" }}
                     >
                       {card.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-amber-800">{card.copy}</p>
-                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600 transition-colors">
+                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600 transition-all duration-300">
                       Explore
-                      <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                      <span className="ml-2 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110">→</span>
                     </span>
                   </div>
                 </Link>
@@ -260,27 +265,26 @@ export default function HomePage() {
                 objectPosition: "object-center",
               },
             ].map((card, i) => (
-              <FadeUp key={card.title} delay={60 * i}>
-                <Link href={card.href} className="group block temple-card overflow-hidden hover-lift">
+              <FadeUp key={card.title} delay={100 * i}>
+                <Link href={card.href} className="group block temple-card-modern overflow-hidden">
                   <div className="relative aspect-square w-full overflow-hidden">
                     <img
                       src={card.img || "/placeholder.svg"}
                       alt={`${card.title} image`}
-                      className={`h-full w-full object-cover ${card.objectPosition} transition-transform duration-500 group-hover:scale-110`}
+                      className={`h-full w-full object-cover ${card.objectPosition} transition-all duration-700 ease-out group-hover:scale-105`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="p-5 bg-gradient-to-b from-amber-50 to-white">
+                  <div className="p-5 bg-gradient-to-b from-amber-50 to-white relative">
                     <h3
-                      className="font-serif text-xl text-amber-900"
+                      className="font-serif text-xl text-amber-900 transition-colors duration-300 group-hover:text-amber-700"
                       style={{ WebkitTextFillColor: "#78350f", background: "none" }}
                     >
                       {card.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-amber-800">{card.copy}</p>
-                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600 transition-colors">
+                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600 transition-all duration-300">
                       Learn more
-                      <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                      <span className="ml-2 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110">→</span>
                     </span>
                   </div>
                 </Link>
@@ -323,18 +327,18 @@ export default function HomePage() {
                   href: "/donate",
                 },
               ].map((item, i) => (
-                <FadeUp key={item.title} delay={70 * i}>
-                  <Link href={item.href} className="block temple-card p-6 hover-glow transition-all duration-300">
+                <FadeUp key={item.title} delay={100 * i}>
+                  <Link href={item.href} className="group block glass-card p-6 rounded-xl hover:shadow-glow-amber transition-all duration-500 hover:-translate-y-2">
                     <h3
-                      className="font-serif text-lg text-amber-900"
+                      className="font-serif text-lg text-amber-900 transition-colors duration-300 group-hover:text-amber-700"
                       style={{ WebkitTextFillColor: "#78350f", background: "none" }}
                     >
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-amber-800">{item.copy}</p>
-                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600">
+                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-amber-700 group-hover:text-amber-600 transition-all duration-300">
                       Explore
-                      <span className="ml-2">→</span>
+                      <span className="ml-2 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110">→</span>
                     </span>
                   </Link>
                 </FadeUp>
@@ -351,37 +355,37 @@ export default function HomePage() {
         <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="grid gap-8 lg:grid-cols-2 items-center">
             <FadeUp>
-              <div className="ornate-frame p-6">
+              <div className="ornate-frame p-8 hover:shadow-glow-amber transition-all duration-500">
                 <h2 className="font-serif text-3xl md:text-4xl mb-4">{t("footer.visit")}</h2>
                 <p className="text-amber-800 leading-relaxed mb-6">
                   {t("home.visit.description")}
                 </p>
-                <div className="space-y-3 text-amber-900">
-                  <p className="flex items-center gap-2">
-                    <span className="text-amber-600"><MapPin className="w-5 h-5" /></span>
+                <div className="space-y-4 text-amber-900">
+                  <p className="flex items-center gap-3 transition-transform duration-300 hover:translate-x-1">
+                    <span className="text-amber-600 p-2 bg-amber-100 rounded-full"><MapPin className="w-5 h-5" /></span>
                     Courtallam, Tamil Nadu, India
                   </p>
-                  <p className="flex items-center gap-2">
-                    <span className="text-amber-600"><Phone className="w-5 h-5" /></span>
+                  <p className="flex items-center gap-3 transition-transform duration-300 hover:translate-x-1">
+                    <span className="text-amber-600 p-2 bg-amber-100 rounded-full"><Phone className="w-5 h-5" /></span>
                     +91 9443184738
                   </p>
-                  <p className="flex items-center gap-2">
-                    <span className="text-amber-600"><Mail className="w-5 h-5" /></span>
+                  <p className="flex items-center gap-3 transition-transform duration-300 hover:translate-x-1">
+                    <span className="text-amber-600 p-2 bg-amber-100 rounded-full"><Mail className="w-5 h-5" /></span>
                     info@srisiddheswari.org
                   </p>
                 </div>
-                <Link href="/contact" className="btn-temple inline-block mt-6">
+                <Link href="/contact" className="btn-modern inline-block mt-8">
                   {t("nav.contact")}
                 </Link>
               </div>
             </FadeUp>
 
-            <FadeUp delay={100}>
-              <div className="image-frame-ornate">
+            <FadeUp delay={150}>
+              <div className="image-frame-ornate animate-glow-border overflow-hidden group">
                 <img
-                  src="/pratyangira-homam-at-peetham.jpg"
-                  alt="Sacred rituals at Sri Siddheswari Peetham"
-                  className="w-full h-80 object-cover"
+                  src="/courtallam-temple-gopuram-and-peetham-campus.png"
+                  alt="Sri Siddheswari Peetham Campus"
+                  className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
                 />
               </div>
             </FadeUp>

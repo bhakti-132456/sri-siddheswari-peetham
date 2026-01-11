@@ -16,7 +16,7 @@ export default function VisitPage() {
             <div className="overflow-hidden rounded-xl border">
               {/* Using a descriptive placeholder; can be swapped with a site image later */}
               <Image
-                src="/courtallam-temple-gopuram-and-peetham-campus.jpg"
+                src="/courtallam-temple-gopuram-and-peetham-campus.png"
                 alt="Courtallam temple gopuram near Sri Siddheswari Peetham"
                 width={900}
                 height={560}
@@ -39,7 +39,7 @@ export default function VisitPage() {
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
                   className="inline-flex"
-                  href="https://maps.google.com/?q=Sri+Siddheswari+Peetham+Courtallam"
+                  href="https://maps.app.goo.gl/jn4UqAgf1wSLwKyw6"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -56,19 +56,23 @@ export default function VisitPage() {
         {/* Info Cards */}
         <section className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <FadeUp>
-            <Card className="h-full overflow-hidden">
-              <div className="h-32 w-full overflow-hidden border-b">
-                <Image
-                  src="/how-to-reach-courtallam-roads-and-buses.jpg"
-                  alt="How to reach Sri Siddheswari Peetham in Courtallam"
-                  width={400}
-                  height={200}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-lg">How to Reach</CardTitle>
-              </CardHeader>
+            <Card className="h-full overflow-hidden hover:shadow-md transition-shadow">
+              <a href="https://maps.app.goo.gl/jn4UqAgf1wSLwKyw6" target="_blank" rel="noopener noreferrer">
+                <div className="h-32 w-full overflow-hidden border-b">
+                  <Image
+                    src="/how-to-reach-courtallam-roads-and-buses.jpg"
+                    alt="How to reach Sri Siddheswari Peetham in Courtallam"
+                    width={400}
+                    height={200}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    How to Reach <span className="text-xs font-normal text-amber-600">(Open Map)</span>
+                  </CardTitle>
+                </CardHeader>
+              </a>
               <CardContent className="text-sm text-neutral-700">
                 Frequent buses from Tenkasi/Tirunelveli. Taxis available from nearby railheads. Roads remain motorable
                 during monsoon. Check local advisories.
@@ -80,7 +84,7 @@ export default function VisitPage() {
             <Card className="h-full overflow-hidden">
               <div className="h-32 w-full overflow-hidden border-b">
                 <Image
-                  src="/temple-timings-and-pooja-schedule.jpg"
+                  src="/temple-timings-and-pooja-schedule.png"
                   alt="Temple timings and pooja schedule"
                   width={400}
                   height={200}
@@ -105,7 +109,7 @@ export default function VisitPage() {
             <Card className="h-full overflow-hidden">
               <div className="h-32 w-full overflow-hidden border-b">
                 <Image
-                  src="/temple-etiquette-and-dress-code.jpg"
+                  src="/temple-etiquette-and-dress-code.png"
                   alt="Temple etiquette and dress code"
                   width={400}
                   height={200}
@@ -126,7 +130,7 @@ export default function VisitPage() {
             <Card className="h-full overflow-hidden">
               <div className="h-32 w-full overflow-hidden border-b">
                 <Image
-                  src="/nearby-courtallam-waterfalls-and-sites.jpg"
+                  src="/nearby-courtallam-waterfalls-and-sites.png"
                   alt="Nearby places around Courtallam waterfalls"
                   width={400}
                   height={200}

@@ -49,7 +49,7 @@ const tiroTamil = Tiro_Tamil({
 export const metadata: Metadata = {
   title: "Sri Siddheswari Peetham - Mouna Swamy Mutt, Courtallam",
   description:
-    "Sri Siddheswari Peetham, established in 1936 at Courtallam, Tamil Nadu, is a spiritual center dedicated to Goddess Raja Rajeshwari Devi, following the traditions of Sri Adi Shankaracharya.",
+    "Sri Siddheswari Peetham, established in 1916 at Courtallam, Tamil Nadu, is a spiritual center dedicated to Goddess Raja Rajeshwari Devi, following the traditions of Sri Adi Shankaracharya.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.png",

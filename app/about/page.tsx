@@ -1,10 +1,15 @@
+"use client"
+
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import Image from "next/image"
 import { FadeUp } from "@/components/animate-on-scroll"
 import { Mountain, ExternalLink, Leaf, CircleDot } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export default function AboutPage() {
+  const { t } = useLanguage()
+
   return (
     <>
       <SiteHeader />
@@ -13,10 +18,9 @@ export default function AboutPage() {
         <FadeUp>
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 p-8 md:p-12">
             <div className="relative z-10">
-              <h1 className="font-serif text-4xl md:text-5xl text-amber-900 mb-4">About Sri Siddheswari Peetham</h1>
+              <h1 className="font-serif text-4xl md:text-5xl text-amber-900 mb-4">{t("about.hero.title")}</h1>
               <p className="text-lg text-amber-800 leading-relaxed max-w-2xl">
-                A sacred sanctuary established in 1936, dedicated to preserving ancient Vedic traditions and spiritual
-                wisdom in the heart of Courtallam's divine landscape.
+                {t("about.hero.description")}
               </p>
             </div>
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-200/30 rounded-full blur-3xl"></div>
@@ -27,41 +31,47 @@ export default function AboutPage() {
         {/* History Section */}
         <div className="mt-16 grid gap-12 md:grid-cols-2 items-center">
           <FadeUp delay={100}>
-            <div className="group">
-              <Image
-                src="/swamiji-at-peetham.jpeg"
-                alt="H.H Sri Siddheswarananda Bharati Swami"
-                width={500}
-                height={400}
-                className="rounded-xl shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:scale-105"
-              />
-              <p className="text-sm text-center text-neutral-600 mt-3">H.H Sri Siddheswarananda Bharati Swami</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="group text-center">
+                <div className="overflow-hidden rounded-xl shadow-lg mb-3 aspect-[4/5]">
+                  <Image
+                    src="/mouna-swami-tapas.jpg"
+                    alt="H.H. Sri Mouna Swamy - Founder"
+                    width={400}
+                    height={500}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="font-serif font-semibold text-amber-900 leading-tight">H.H. Sri Mouna Swamy</p>
+                <p className="text-xs text-amber-700 font-medium mt-1">Founder</p>
+              </div>
+
+              <div className="group text-center">
+                <div className="overflow-hidden rounded-xl shadow-lg mb-3 aspect-[4/5]">
+                  <Image
+                    src="/siddheswarananda-bharati-current.jpg"
+                    alt="H.H. Sri Siddheswarananda Bharati Swamy - Current Peethadhipathi"
+                    width={400}
+                    height={500}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="font-serif font-semibold text-amber-900 leading-tight">
+                  H.H. Sri Siddheswarananda Bharati Swamy
+                </p>
+                <p className="text-xs text-amber-700 font-medium mt-1">Current Peethadhipathi</p>
+              </div>
             </div>
           </FadeUp>
 
           <FadeUp delay={200}>
             <div className="space-y-6">
-              <h2 className="font-serif text-3xl text-amber-900">Sacred Foundation</h2>
+              <h2 className="font-serif text-3xl text-amber-900">{t("about.history.title")}</h2>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
-                <p>
-                  Sri Siddheswari Peetham was established at Courtallam, in the Tirunelveli district of Tamil Nadu, by{" "}
-                  <strong>Sri Sri Sri Sivachidananda Saraswati Swami (Mounaswami)</strong>, revered as the silent sage of Courtallam.
-                </p>
-                <p>
-                  Born as Sivayya in a village in Bapatla taluk, he led a devoted grihastha life before the sudden
-                  death of a relative in the Godavari awakened in him a deep awareness of life's impermanence. In 1906,
-                  he left home in search of a Guru, receiving sannyasa from Sri Achutananda Saraswati.
-                </p>
-                <p>
-                  At an All-India Vedic conference in Kashmir, his Guru warned him about the subtle rise of ego through
-                  unasked display of knowledge. Taking this to heart, he vowed lifelong silence (mouna), communicating
-                  only through gestures and written notes — hence the name "Mouna Swamy."
-                </p>
-                <p>
-                  The sacred idol of <strong>Sri Siddheswari Devi (Raja Rajeswari Devi)</strong> was installed on
-                  October 3, 1916, marking the beginning of this divine sanctuary. He attained Mahasamadhi on December
-                  28, 1943, and devotees continue to experience his presence and blessings to this day.
-                </p>
+                <p>{t("about.history.para1")}</p>
+                <p>{t("about.history.para2")}</p>
+                <p>{t("about.history.para3")}</p>
+                <p>{t("about.history.para4")}</p>
               </div>
             </div>
           </FadeUp>
@@ -75,10 +85,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors">
                   <span className="text-2xl text-amber-700"><Mountain className="w-8 h-8" /></span>
                 </div>
-                <h3 className="font-semibold text-amber-900 mb-2">Sacred Location</h3>
+                <h3 className="font-semibold text-amber-900 mb-2">{t("about.location.title")}</h3>
                 <p className="text-sm text-neutral-600">
-                  Nestled in Courtallam, known as Agasthya Kshethram, famous for its healing waterfalls and natural
-                  beauty.
+                  {t("about.location.description")}
                 </p>
               </div>
 
@@ -86,10 +95,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors">
                   <span className="text-2xl text-amber-700"><CircleDot className="w-8 h-8" /></span>
                 </div>
-                <h3 className="font-semibold text-amber-900 mb-2">Vedic Traditions</h3>
+                <h3 className="font-semibold text-amber-900 mb-2">{t("about.traditions.title")}</h3>
                 <p className="text-sm text-neutral-600">
-                  Following the ancient traditions of Sri Adi Shankaracharya, preserving higher knowledge and Veda
-                  Dharma.
+                  {t("about.traditions.description")}
                 </p>
               </div>
 
@@ -97,10 +105,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors">
                   <span className="text-2xl text-amber-700"><Leaf className="w-8 h-8" /></span>
                 </div>
-                <h3 className="font-semibold text-amber-900 mb-2">Natural Healing</h3>
+                <h3 className="font-semibold text-amber-900 mb-2">{t("about.healing.title")}</h3>
                 <p className="text-sm text-neutral-600">
-                  Best visited during southwest monsoon (June-September) for the full experience of nature's medicinal
-                  herbs.
+                  {t("about.healing.description")}
                 </p>
               </div>
             </div>
@@ -110,27 +117,40 @@ export default function AboutPage() {
         {/* Guru Parampara */}
         <div className="mt-16">
           <FadeUp delay={400}>
-            <h2 className="font-serif text-3xl text-center text-amber-900 mb-8">Guru Parampara</h2>
+            <h2 className="font-serif text-3xl text-center text-amber-900 mb-8">{t("about.parampara.title")}</h2>
           </FadeUp>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                name: "Sri Sri Sri Sivachidananda Saraswati Swami",
-                title: "Founder (Mounaswami)",
-                period: "1916-1943",
+                name: t("swami1.name"),
+                title: t("swami1.title"),
+                period: t("swami1.period"),
               },
-              { name: "H.H Sri Vimalananda Bharati Swamy", title: "Second Peethadhipathi", period: "1936-1965" },
               {
-                name: "H.H Sri Trivikrama Ramananda Bharati Swamy",
-                title: "Third Peethadhipathi",
-                period: "1965-1985",
+                name: t("swami2.name"),
+                title: t("swami2.title"),
+                period: t("swami2.period")
               },
-              { name: "H.H Sri Siva Chidananda Bharati Swamy", title: "Fourth Peethadhipathi", period: "1985-2010" },
               {
-                name: "H.H Sri Siddheswarananda Bharati Swami",
-                title: "Present Peethadhipathi",
-                period: "2010-Present",
+                name: t("swami3.name"),
+                title: t("swami3.title"),
+                period: t("swami3.period"),
+              },
+              {
+                name: t("swami4.name"),
+                title: t("swami4.title"),
+                period: t("swami4.period")
+              },
+              {
+                name: t("swami5.name"),
+                title: t("swami5.title"),
+                period: t("swami5.period"),
+              },
+              {
+                name: t("swami6.name"),
+                title: t("swami6.title"),
+                period: t("swami6.period"),
               },
             ].map((guru, index) => (
               <FadeUp key={index} delay={500 + index * 100}>
@@ -153,12 +173,11 @@ export default function AboutPage() {
         <FadeUp delay={800}>
           <div className="mt-16 text-center bg-gradient-to-r from-amber-900 to-orange-800 text-white rounded-2xl p-12 relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="font-serif text-3xl mb-4 text-white">Presiding Deity</h2>
-              <p className="text-xl mb-2">Sri Raja Rajeshwari Devi</p>
-              <p className="text-lg opacity-90 mb-4">(Sri Siddheswari Devi)</p>
+              <h2 className="font-serif text-3xl mb-4 text-white">{t("about.deity.title")}</h2>
+              <p className="text-xl mb-2">{t("about.deity.name")}</p>
+              <p className="text-lg opacity-90 mb-4">{t("about.deity.aka")}</p>
               <p className="max-w-2xl mx-auto leading-relaxed opacity-90">
-                The divine mother goddess, installed with great reverence on October 3, 1916, continues to bless
-                devotees with her infinite grace and compassion, making this peetham a beacon of spiritual light.
+                {t("about.deity.description")}
               </p>
             </div>
             <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>

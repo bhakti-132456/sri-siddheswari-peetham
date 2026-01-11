@@ -95,10 +95,10 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-all duration-500 ease-out",
         scrolled
-          ? "bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 shadow-xl border-b-2 border-amber-400"
-          : "bg-gradient-to-r from-amber-50/98 via-orange-50/98 to-amber-50/98 backdrop-blur-md border-b border-amber-300",
+          ? "bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 shadow-depth-2 border-b-2 border-amber-400/60"
+          : "bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 border-b border-amber-300/50",
       )}
     >
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700" />
@@ -163,18 +163,22 @@ export function SiteHeader() {
                 </button>
 
                 {activeDropdown === group.labelKey && (
-                  <div className="absolute top-full left-0 mt-1 w-56 rounded-xl bg-white shadow-lg border border-neutral-200 py-2 z-50">
-                    {group.items?.map((item) => (
+                  <div
+                    className="absolute top-full left-0 mt-2 w-56 rounded-xl bg-white shadow-depth-3 py-2 z-50 animate-scale-in origin-top border border-amber-200"
+                    style={{ animationDuration: '200ms' }}
+                  >
+                    {group.items?.map((item, idx) => (
                       <Link
                         key={item.href}
                         href={item.href}
                         onClick={() => setActiveDropdown(null)}
                         className={cn(
-                          "block px-4 py-3 text-sm transition-colors",
+                          "block px-4 py-3 text-sm transition-all duration-200 relative overflow-hidden",
                           pathname === item.href
-                            ? "text-neutral-900 bg-neutral-100 font-medium"
-                            : "text-neutral-700 hover:text-orange-700 hover:bg-neutral-50",
+                            ? "text-amber-900 bg-amber-100/50 font-semibold"
+                            : "text-amber-800 hover:text-amber-900 hover:bg-amber-50/80 hover:translate-x-1",
                         )}
+                        style={{ animationDelay: `${idx * 50}ms` }}
                       >
                         {t(item.labelKey)}
                       </Link>

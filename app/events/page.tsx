@@ -103,7 +103,7 @@ export default function EventsPage() {
               <div className="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
                 <div className="relative overflow-hidden">
                   <Image
-                    src="/pratyangira-homam-at-peetham.jpg"
+                    src="/pratyangira-homam-at-peetham.png"
                     alt="Pratyangira Homam at Sri Siddheswari Peetham"
                     width={400}
                     height={200}
@@ -131,7 +131,7 @@ export default function EventsPage() {
               <div className="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
                 <div className="relative overflow-hidden">
                   <Image
-                    src="/sri-chakra-maha-meru.jpg"
+                    src="/maha-meru-worship-with-lamps.png"
                     alt="Sri Chakra Maha Meru at the Peetham"
                     width={400}
                     height={200}

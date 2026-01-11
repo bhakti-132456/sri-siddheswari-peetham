@@ -34,7 +34,7 @@ export default function ParamparaPage() {
       name: t("swami1.name"),
       role: t("swami1.title"),
       period: t("swami1.period"),
-      year: "1954",
+      year: "1916",
       image: "/mouna-swami-portrait-1.jpg",
       description: t("swami1.brief"),
       fullDescription: t("swami1.description"),
@@ -46,7 +46,7 @@ export default function ParamparaPage() {
       name: t("swami2.name"),
       role: t("swami2.title"),
       period: t("swami2.period"),
-      year: "1981",
+      year: "1944",
       image: "/vimalananda-bharati-portrait.jpg",
       description: t("swami2.brief"),
       fullDescription: t("swami2.description"),
@@ -58,7 +58,7 @@ export default function ParamparaPage() {
       name: t("swami3.name"),
       role: t("swami3.title"),
       period: t("swami3.period"),
-      year: "1981",
+      year: "1950",
       image: "/trivikrama-ramananda-standing.jpg",
       description: t("swami3.brief"),
       fullDescription: t("swami3.description"),
@@ -70,8 +70,8 @@ export default function ParamparaPage() {
       name: t("swami4.name"),
       role: t("swami4.title"),
       period: t("swami4.period"),
-      year: "1981",
-      image: "/siva-chidananda-standing.jpg",
+      year: "1991",
+      image: "/hh-siddheswarananda-bharati-swami.png",
       description: t("swami4.brief"),
       fullDescription: t("swami4.description"),
       birth: t("swami4.birth"),
@@ -83,7 +83,7 @@ export default function ParamparaPage() {
       role: t("swami5.title"),
       period: t("swami5.period"),
       year: "2002",
-      image: "/siddheswarananda-blessing.png",
+      image: "/siva-chidananda-final.png",
       description: t("swami5.brief"),
       fullDescription: t("swami5.description"),
       birth: t("swami5.birth"),
@@ -94,8 +94,8 @@ export default function ParamparaPage() {
       name: t("swami6.name"),
       role: t("swami6.title"),
       period: t("swami6.period"),
-      year: "2024",
-      image: "/datteshwarananda-standing.jpg",
+      year: "Next",
+      image: "/datteshwarananda-final.jpg",
       description: t("swami6.brief"),
       fullDescription: t("swami6.description"),
       birth: t("swami6.birth"),
@@ -193,8 +193,8 @@ export default function ParamparaPage() {
                           <button
                             onClick={() => toggleExpand(guru.id)}
                             className={`inline-flex items-center gap-1.5 text-sm font-bold transition-all duration-300 px-4 py-2 rounded-full border-2 ${isExpanded
-                                ? "bg-amber-50 border-amber-200 text-amber-800"
-                                : "bg-transparent border-transparent text-amber-600 hover:bg-amber-50 hover:text-amber-800"
+                              ? "bg-amber-50 border-amber-200 text-amber-800"
+                              : "bg-transparent border-transparent text-amber-600 hover:bg-amber-50 hover:text-amber-800"
                               }`}
                           >
                             {isExpanded ? (
