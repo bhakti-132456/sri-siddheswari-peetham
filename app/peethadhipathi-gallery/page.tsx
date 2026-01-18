@@ -170,106 +170,135 @@ export default function PeethadhipathiGalleryPage() {
       <SiteHeader />
       <main className="min-h-screen bg-neutral-950">
         {/* Hero Section - Devotional & Respectful */}
-        <div className="relative min-h-[80vh] flex items-center overflow-hidden bg-radial-[at_50%_0%] from-amber-900/40 via-neutral-950 to-neutral-950">
-          {/* Background Decorative Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-amber-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-3xl" />
+        {/* Hero Section - Sacred Premium Design */}
+        <div className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0c0a09]">
+          {/* Background Effects */}
+          <div className="absolute inset-0">
+            <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-amber-900/20 rounded-full blur-[120px] opacity-60 mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
+            <div className="absolute bottom-[-10%] right-[-5%] w-[60vw] h-[60vw] bg-orange-800/20 rounded-full blur-[100px] opacity-50 mix-blend-screen" />
+            <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 pt-20 pb-12">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 pt-24 pb-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSwami.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
+                transition={{ duration: 0.7 }}
+                className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-20 items-center"
               >
                 {/* Text Content */}
-                <div className="text-center md:text-left order-2 md:order-1">
+                <div className="text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
                   >
-                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-sm">
-                      <p className="text-amber-300 font-medium tracking-widest uppercase text-xs">
+                    <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-950/40 backdrop-blur-md shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                      <p className="text-amber-200 font-medium tracking-widest uppercase text-xs">
                         {activeSwami.period === "Successor" ? "Successor Designate" : activeSwami.period}
                       </p>
                     </div>
-                    <h1 className="font-serif text-3xl md:text-4xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-amber-100 via-amber-200 to-amber-500 font-bold mb-6 leading-tight drop-shadow-sm">
-                      {activeSwami.name}
+
+                    <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-lg">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-500">
+                        {activeSwami.name}
+                      </span>
                     </h1>
-                    <div className="h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent mx-auto md:mx-0 mb-6" />
-                    <p className="text-amber-100/80 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto md:mx-0">
+
+                    <div className="h-1.5 w-32 bg-gradient-to-r from-amber-500 via-amber-300 to-transparent rounded-full mx-auto lg:mx-0 mb-8 opacity-80" />
+
+                    <p className="text-stone-300 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 tracking-wide">
                       {activeSwami.title}
                     </p>
                   </motion.div>
 
-                  {/* Desktop Navigation Arrows (Moved here for better UX) */}
-                  <div className="hidden md:flex items-center gap-4 mt-12">
+                  {/* Navigation Controls */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex items-center gap-6 mt-12"
+                  >
                     <button
                       onClick={prevSwami}
-                      className="p-3 rounded-full border border-amber-500/30 text-amber-200 hover:bg-amber-500/20 hover:text-white transition-all group"
-                      aria-label="Previous Swami"
+                      className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
                     >
-                      <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+                      <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform text-amber-400" />
+                      <span className="text-sm font-medium uppercase tracking-wider">Previous</span>
                     </button>
-                    <div className="h-px flex-1 bg-amber-500/20" />
+
+                    <div className="h-8 w-px bg-amber-500/20" />
+
                     <button
                       onClick={nextSwami}
-                      className="p-3 rounded-full border border-amber-500/30 text-amber-200 hover:bg-amber-500/20 hover:text-white transition-all group"
-                      aria-label="Next Swami"
+                      className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
                     >
-                      <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      <span className="text-sm font-medium uppercase tracking-wider">Next</span>
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-amber-400" />
                     </button>
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Swami Image - Framed & Respectful */}
-                <div className="relative order-1 md:order-2 flex justify-center">
-                  {/* Glow behind image */}
-                  <div className="absolute inset-0 bg-amber-500/20 blur-[60px] rounded-full scale-75" />
-
+                {/* Swami Image Frame */}
+                <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000">
                   <motion.div
-                    className="relative z-10"
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="relative z-10 w-full max-w-md mx-auto lg:mx-0"
+                    initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                   >
-                    {/* The Frame */}
-                    <div className="relative p-3 rounded-2xl bg-gradient-to-b from-amber-300/20 to-amber-500/5 backdrop-blur-sm border border-amber-200/20 shadow-2xl">
-                      <div className="relative rounded-xl overflow-hidden bg-neutral-900 border border-white/5 aspect-[3/4] md:aspect-[3/4] max-h-[60vh] w-auto mx-auto shadow-inner">
+                    {/* Golden Glow Behind */}
+                    <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full scale-90 lg:scale-100 animate-pulse" />
+
+                    {/* The Frame Container */}
+                    <div className="relative aspect-[3/4] rounded-t-[10rem] rounded-b-[3rem] p-4 bg-gradient-to-b from-amber-200/20 via-amber-500/10 to-transparent backdrop-blur-sm border border-amber-200/30 shadow-2xl overflow-hidden group">
+
+                      {/* Inner Border Structure */}
+                      <div className="absolute inset-0 rounded-t-[10rem] rounded-b-[3rem] border-2 border-amber-300/20 pointer-events-none" />
+
+                      {/* Image Container */}
+                      <div className="relative w-full h-full rounded-t-[9rem] rounded-b-[2rem] overflow-hidden bg-stone-900/80 shadow-inner">
                         <Image
                           src={activeSwami.image}
                           alt={activeSwami.name}
                           fill
-                          className={`object-cover ${activeSwami.imagePosition} p-2`}
+                          className={`object-cover ${activeSwami.imagePosition} transition-transform duration-1000 group-hover:scale-105`}
                           priority
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
+
+                        {/* Overlay Gradient for Text Readability if needed, though strictly requested to fit */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                       </div>
-                      {/* Corner Ornaments */}
-                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-400/50 rounded-tl-lg -mt-1 -ml-1" />
-                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-400/50 rounded-tr-lg -mt-1 -mr-1" />
-                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-400/50 rounded-bl-lg -mb-1 -ml-1" />
-                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-400/50 rounded-br-lg -mb-1 -mr-1" />
+
+                      {/* Ornate Frame Details */}
+                      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-16 border-t-2 border-amber-400/60 rounded-full opacity-70" />
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[80%] h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
                     </div>
                   </motion.div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Mobile Navigation */}
-            <div className="flex md:hidden justify-between items-center mt-8 px-4">
-              <button onClick={prevSwami} className="p-2 text-amber-200 hover:text-white"><ChevronLeft size={32} /></button>
-              <div className="flex gap-2">
-                {peethadhipathis.map((_, idx) => (
-                  <div key={idx} className={`h-1.5 rounded-full transition-all ${idx === activeSwamiIndex ? "w-6 bg-amber-400" : "w-1.5 bg-amber-800"}`} />
-                ))}
-              </div>
-              <button onClick={nextSwami} className="p-2 text-amber-200 hover:text-white"><ChevronRight size={32} /></button>
+            {/* Pagination Dots (Mobile/Tablet friendly interaction indication) */}
+            <div className="flex justify-center gap-3 mt-12 lg:hidden">
+              {peethadhipathis.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setActiveSwamiIndex(idx)
+                    setCurrentImageIndex(0)
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${idx === activeSwamiIndex
+                    ? "w-8 bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.6)]"
+                    : "w-2 bg-amber-800/50 hover:bg-amber-600/50"}`}
+                  aria-label={`Go to Swami ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
