@@ -169,87 +169,108 @@ export default function PeethadhipathiGalleryPage() {
     <>
       <SiteHeader />
       <main className="min-h-screen bg-neutral-950">
-        {/* Hero Section with Full-width Image */}
-        <div className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSwami.id}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={activeSwami.image}
-                alt={activeSwami.name}
-                fill
-                className={`object-cover ${activeSwami.imagePosition}`}
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-transparent to-neutral-950/80" />
-            </motion.div>
-          </AnimatePresence>
+        {/* Hero Section - Devotional & Respectful */}
+        <div className="relative min-h-[80vh] flex items-center overflow-hidden bg-radial-[at_50%_0%] from-amber-900/40 via-neutral-950 to-neutral-950">
+          {/* Background Decorative Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-amber-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-3xl" />
+          </div>
 
-          {/* Hero Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 lg:p-16">
-            <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 pt-20 pb-12">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={activeSwami.id + "-text"}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                key={activeSwami.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
               >
-                <p className="text-amber-400 font-medium tracking-widest uppercase text-sm mb-3">
-                  {activeSwami.period === "Successor" ? "Successor Designate" : activeSwami.period}
-                </p>
-                <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-4 leading-tight">
-                  {activeSwami.name}
-                </h1>
-                <p className="text-amber-200/80 text-lg md:text-xl font-light max-w-xl">
-                  {activeSwami.title}
-                </p>
+                {/* Text Content */}
+                <div className="text-center md:text-left order-2 md:order-1">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-sm">
+                      <p className="text-amber-300 font-medium tracking-widest uppercase text-xs">
+                        {activeSwami.period === "Successor" ? "Successor Designate" : activeSwami.period}
+                      </p>
+                    </div>
+                    <h1 className="font-serif text-3xl md:text-4xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-amber-100 via-amber-200 to-amber-500 font-bold mb-6 leading-tight drop-shadow-sm">
+                      {activeSwami.name}
+                    </h1>
+                    <div className="h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent mx-auto md:mx-0 mb-6" />
+                    <p className="text-amber-100/80 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto md:mx-0">
+                      {activeSwami.title}
+                    </p>
+                  </motion.div>
+
+                  {/* Desktop Navigation Arrows (Moved here for better UX) */}
+                  <div className="hidden md:flex items-center gap-4 mt-12">
+                    <button
+                      onClick={prevSwami}
+                      className="p-3 rounded-full border border-amber-500/30 text-amber-200 hover:bg-amber-500/20 hover:text-white transition-all group"
+                      aria-label="Previous Swami"
+                    >
+                      <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+                    </button>
+                    <div className="h-px flex-1 bg-amber-500/20" />
+                    <button
+                      onClick={nextSwami}
+                      className="p-3 rounded-full border border-amber-500/30 text-amber-200 hover:bg-amber-500/20 hover:text-white transition-all group"
+                      aria-label="Next Swami"
+                    >
+                      <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Swami Image - Framed & Respectful */}
+                <div className="relative order-1 md:order-2 flex justify-center">
+                  {/* Glow behind image */}
+                  <div className="absolute inset-0 bg-amber-500/20 blur-[60px] rounded-full scale-75" />
+
+                  <motion.div
+                    className="relative z-10"
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    {/* The Frame */}
+                    <div className="relative p-3 rounded-2xl bg-gradient-to-b from-amber-300/20 to-amber-500/5 backdrop-blur-sm border border-amber-200/20 shadow-2xl">
+                      <div className="relative rounded-xl overflow-hidden bg-neutral-900 border border-white/5 aspect-[3/4] md:aspect-[3/4] max-h-[60vh] w-auto mx-auto shadow-inner">
+                        <Image
+                          src={activeSwami.image}
+                          alt={activeSwami.name}
+                          fill
+                          className={`object-cover ${activeSwami.imagePosition} p-2`}
+                          priority
+                        />
+                      </div>
+                      {/* Corner Ornaments */}
+                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-400/50 rounded-tl-lg -mt-1 -ml-1" />
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-400/50 rounded-tr-lg -mt-1 -mr-1" />
+                      <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-400/50 rounded-bl-lg -mb-1 -ml-1" />
+                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-400/50 rounded-br-lg -mb-1 -mr-1" />
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
+            </AnimatePresence>
+
+            {/* Mobile Navigation */}
+            <div className="flex md:hidden justify-between items-center mt-8 px-4">
+              <button onClick={prevSwami} className="p-2 text-amber-200 hover:text-white"><ChevronLeft size={32} /></button>
+              <div className="flex gap-2">
+                {peethadhipathis.map((_, idx) => (
+                  <div key={idx} className={`h-1.5 rounded-full transition-all ${idx === activeSwamiIndex ? "w-6 bg-amber-400" : "w-1.5 bg-amber-800"}`} />
+                ))}
+              </div>
+              <button onClick={nextSwami} className="p-2 text-amber-200 hover:text-white"><ChevronRight size={32} /></button>
             </div>
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 z-20">
-            <button
-              onClick={prevSwami}
-              className="p-3 md:p-4 bg-white/10 hover:bg-amber-500 text-white rounded-full transition-all backdrop-blur-md border border-white/20 hover:border-amber-400 shadow-lg group"
-              aria-label="Previous Swami"
-            >
-              <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
-            </button>
-          </div>
-          <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 z-20">
-            <button
-              onClick={nextSwami}
-              className="p-3 md:p-4 bg-white/10 hover:bg-amber-500 text-white rounded-full transition-all backdrop-blur-md border border-white/20 hover:border-amber-400 shadow-lg group"
-              aria-label="Next Swami"
-            >
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
-            </button>
-          </div>
-
-          {/* Swami Selector Dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-            {peethadhipathis.map((swami, idx) => (
-              <button
-                key={swami.id}
-                onClick={() => {
-                  setActiveSwamiIndex(idx)
-                  setCurrentImageIndex(0)
-                }}
-                className={`h-2 rounded-full transition-all duration-300 ${idx === activeSwamiIndex
-                    ? "w-8 bg-amber-400"
-                    : "w-2 bg-white/40 hover:bg-white/70"
-                  }`}
-                aria-label={`View ${swami.name}`}
-              />
-            ))}
           </div>
         </div>
 
@@ -287,24 +308,25 @@ export default function PeethadhipathiGalleryPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: idx * 0.1 }}
-                      className={`relative overflow-hidden rounded-xl cursor-pointer group ${idx === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
+                      className={`relative overflow-hidden rounded-xl cursor-pointer group bg-neutral-100 border border-neutral-200 shadow-sm hover:shadow-md transition-all ${idx === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
                         }`}
                       onClick={() => openLightbox(idx)}
                     >
-                      <Image
-                        src={photo}
-                        alt={`${activeSwami.name} - Photo ${idx + 1}`}
-                        fill
-                        className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
-                          <ZoomIn className="w-6 h-6 text-white" />
-                        </div>
+                      {/* Inner "Mat" frame */}
+                      <div className="absolute inset-2 bg-white rounded-lg shadow-inner overflow-hidden flex items-center justify-center">
+                        <Image
+                          src={photo}
+                          alt={`${activeSwami.name} - Photo ${idx + 1}`}
+                          fill
+                          className="object-contain p-1"
+                        />
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p className="text-white text-sm font-medium">View Photo</p>
+
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div className="p-3 bg-white/90 rounded-full shadow-lg backdrop-blur-sm transform scale-90 group-hover:scale-100 transition-transform">
+                          <ZoomIn className="w-6 h-6 text-amber-900" />
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -353,8 +375,8 @@ export default function PeethadhipathiGalleryPage() {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                       }}
                       className={`group relative overflow-hidden rounded-xl transition-all duration-300 ${idx === activeSwamiIndex
-                          ? "ring-4 ring-amber-400 ring-offset-2"
-                          : "hover:ring-2 hover:ring-amber-200"
+                        ? "ring-4 ring-amber-400 ring-offset-2"
+                        : "hover:ring-2 hover:ring-amber-200"
                         }`}
                     >
                       <div className="aspect-[3/4] relative">
@@ -365,8 +387,8 @@ export default function PeethadhipathiGalleryPage() {
                           className={`object-cover ${swami.imagePosition} transition-transform duration-500 group-hover:scale-110`}
                         />
                         <div className={`absolute inset-0 transition-colors duration-300 ${idx === activeSwamiIndex
-                            ? "bg-amber-600/20"
-                            : "bg-black/30 group-hover:bg-black/10"
+                          ? "bg-amber-600/20"
+                          : "bg-black/30 group-hover:bg-black/10"
                           }`} />
                       </div>
                       <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
