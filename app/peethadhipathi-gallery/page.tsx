@@ -171,13 +171,8 @@ export default function PeethadhipathiGalleryPage() {
       <main className="min-h-screen bg-neutral-950">
         {/* Hero Section - Devotional & Respectful */}
         {/* Hero Section - Sacred Premium Design */}
-        <div className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0c0a09]">
-          {/* Background Effects */}
-          <div className="absolute inset-0">
-            <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-amber-900/20 rounded-full blur-[120px] opacity-60 mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
-            <div className="absolute bottom-[-10%] right-[-5%] w-[60vw] h-[60vw] bg-orange-800/20 rounded-full blur-[100px] opacity-50 mix-blend-screen" />
-            <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
-          </div>
+        {/* Hero Section - Sacred Premium Design */}
+        <div className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-amber-950 via-black to-neutral-950">
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 pt-24 pb-16">
             <AnimatePresence mode="wait">
@@ -187,10 +182,10 @@ export default function PeethadhipathiGalleryPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.7 }}
-                className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-20 items-center"
+                className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
               >
                 {/* Text Content */}
-                <div className="text-center lg:text-left order-2 lg:order-1 flex flex-col items-center lg:items-start">
+                <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -203,7 +198,7 @@ export default function PeethadhipathiGalleryPage() {
                       </p>
                     </div>
 
-                    <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-lg">
+                    <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-lg">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-500">
                         {activeSwami.name}
                       </span>
@@ -211,9 +206,23 @@ export default function PeethadhipathiGalleryPage() {
 
                     <div className="h-1.5 w-32 bg-gradient-to-r from-amber-500 via-amber-300 to-transparent rounded-full mx-auto lg:mx-0 mb-8 opacity-80" />
 
-                    <p className="text-stone-300 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto lg:mx-0 tracking-wide">
+                    <p className="text-amber-200/80 text-lg font-medium mb-4 tracking-wide">
                       {activeSwami.title}
                     </p>
+
+                    <p className="text-stone-300 text-base md:text-lg font-light leading-relaxed max-w-xl mx-auto lg:mx-0 tracking-wide line-clamp-3 mb-8">
+                      {activeSwami.description}
+                    </p>
+
+                    <button
+                      onClick={() => {
+                        const storySection = document.getElementById('story-section');
+                        storySection?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors uppercase text-sm font-bold tracking-widest border-b border-amber-500/50 pb-1 hover:border-amber-400 mb-8"
+                    >
+                      Read Story <ChevronRight className="w-4 h-4" />
+                    </button>
                   </motion.div>
 
                   {/* Navigation Controls */}
@@ -221,7 +230,7 @@ export default function PeethadhipathiGalleryPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="flex items-center gap-6 mt-12"
+                    className="flex items-center gap-6"
                   >
                     <button
                       onClick={prevSwami}
@@ -244,7 +253,7 @@ export default function PeethadhipathiGalleryPage() {
                 </div>
 
                 {/* Swami Image Frame */}
-                <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000">
+                <div className="relative flex justify-center lg:justify-end perspective-1000">
                   <motion.div
                     className="relative z-10 w-full max-w-md mx-auto lg:mx-0"
                     initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
@@ -271,7 +280,7 @@ export default function PeethadhipathiGalleryPage() {
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
 
-                        {/* Overlay Gradient for Text Readability if needed, though strictly requested to fit */}
+                        {/* Overlay Gradient for Text Readability - Keep it minimal */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                       </div>
 
@@ -311,7 +320,7 @@ export default function PeethadhipathiGalleryPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
             <FadeUp key={activeSwami.id}>
               {/* Story Section */}
-              <section className="mb-16 md:mb-24">
+              <section id="story-section" className="mb-16 md:mb-24 scroll-mt-32">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-px bg-amber-400" />
                   <h2 className="font-serif text-2xl md:text-3xl text-amber-900 font-bold">The Story</h2>
