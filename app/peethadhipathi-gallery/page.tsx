@@ -8,6 +8,7 @@ import { FadeUp } from "@/components/animate-on-scroll"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import { useLanguage } from "@/lib/language-context"
+import { RichTextRenderer } from "@/components/rich-text-renderer"
 
 export default function PeethadhipathiGalleryPage() {
   const { t } = useLanguage()
@@ -326,9 +327,12 @@ export default function PeethadhipathiGalleryPage() {
                   <h2 className="font-serif text-2xl md:text-3xl text-amber-900 font-bold">The Story</h2>
                 </div>
                 <div className="prose prose-lg prose-amber max-w-none">
-                  <p className="text-xl md:text-2xl leading-relaxed text-neutral-700 font-serif whitespace-pre-line first-letter:text-6xl first-letter:font-bold first-letter:text-amber-900 first-letter:mr-3 first-letter:float-left first-letter:leading-none">
-                    {activeSwami.description}
-                  </p>
+                  <div className="prose prose-lg prose-amber max-w-none">
+                    <RichTextRenderer
+                      content={activeSwami.description}
+                      className="text-lg md:text-xl text-neutral-700 font-serif"
+                    />
+                  </div>
                 </div>
               </section>
 

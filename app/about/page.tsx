@@ -6,6 +6,7 @@ import Image from "next/image"
 import { FadeUp } from "@/components/animate-on-scroll"
 import { Mountain, ExternalLink, Leaf, CircleDot } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import { RichTextRenderer } from "@/components/rich-text-renderer"
 
 export default function AboutPage() {
   const { t } = useLanguage()
@@ -68,10 +69,10 @@ export default function AboutPage() {
             <div className="space-y-6">
               <h2 className="font-serif text-3xl text-amber-900">{t("about.history.title")}</h2>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
-                <p>{t("about.history.para1")}</p>
-                <p>{t("about.history.para2")}</p>
-                <p>{t("about.history.para3")}</p>
-                <p>{t("about.history.para4")}</p>
+                <RichTextRenderer content={t("about.history.para1")} />
+                <RichTextRenderer content={t("about.history.para2")} />
+                <RichTextRenderer content={t("about.history.para3")} />
+                <RichTextRenderer content={t("about.history.para4")} />
               </div>
             </div>
           </FadeUp>
