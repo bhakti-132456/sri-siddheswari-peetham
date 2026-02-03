@@ -84,7 +84,7 @@ export default function ContactPage() {
                   <div className="mt-3 space-y-2">
                     <p className="text-sm text-neutral-700 flex items-center gap-2">
                       <Mail size={16} />
-                      <span>info@srisiddheswari.org</span>
+                      <span>feedback@srisiddheshwaripeetham.com</span>
                     </p>
                     <p className="text-sm text-neutral-700 flex items-center gap-2">
                       <Phone size={16} />

@@ -371,7 +371,7 @@ export default function HomePage() {
                   </p>
                   <p className="flex items-center gap-3 transition-transform duration-300 hover:translate-x-1">
                     <span className="text-amber-600 p-2 bg-amber-100 rounded-full"><Mail className="w-5 h-5" /></span>
-                    info@srisiddheswari.org
+                    feedback@srisiddheshwaripeetham.com
                   </p>
                 </div>
                 <Link href="/contact" className="btn-modern inline-block mt-8">

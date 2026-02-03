@@ -131,10 +131,10 @@ export default function SiteFooter() {
               <li className="pl-5">
                 Email:{" "}
                 <a
-                  href="mailto:info@srisiddheswari.org"
+                  href="mailto:feedback@srisiddheshwaripeetham.com"
                   className="hover:text-amber-300 transition-colors underline-offset-2 hover:underline"
                 >
-                  info@srisiddheswari.org
+                  feedback@srisiddheshwaripeetham.com
                 </a>
               </li>
             </ul>
