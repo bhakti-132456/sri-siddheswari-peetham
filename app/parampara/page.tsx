@@ -224,10 +224,12 @@ export default function ParamparaPage() {
                                 className="overflow-hidden"
                               >
                                 <div className="pt-4 border-t border-gray-100 text-sm text-gray-600 space-y-3">
-                                  <p className="italic bg-amber-50/50 p-3 rounded-lg border border-amber-100/50 whitespace-pre-wrap leading-relaxed text-justify">
+                                  <div className="italic bg-amber-50/50 p-3 rounded-lg border border-amber-100/50 leading-relaxed text-justify">
                                     <span className="font-semibold text-amber-900 block mb-2">{t("parampara.read_full_history")}:</span>
-                                    {guru.fullDescription}
-                                  </p>
+                                    {guru.fullDescription.split('\n').filter(line => line.trim()).map((line, i) => (
+                                      <p key={i} className="mb-4 last:mb-0 min-h-[1em]">{line}</p>
+                                    ))}
+                                  </div>
                                   <div className="text-xs text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
                                     <span><strong>{t("parampara.born")}:</strong> {guru.birth}</span>
                                     <span>
