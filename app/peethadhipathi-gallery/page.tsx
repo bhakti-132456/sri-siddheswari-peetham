@@ -9,17 +9,7 @@ import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import { useLanguage } from "@/lib/language-context"
 import { RichTextRenderer } from "@/components/rich-text-renderer"
-import bioEn from "@/lib/data/biographies_en.json"
-import bioHi from "@/lib/data/biographies_hi.json"
-import bioTa from "@/lib/data/biographies_ta.json"
-import bioTe from "@/lib/data/biographies_te.json"
-
-const biographyData: Record<string, Record<string, string>> = {
-  en: bioEn,
-  hi: bioHi,
-  ta: bioTa,
-  te: bioTe,
-}
+import { biographies } from "@/lib/data/biographies"
 
 export default function PeethadhipathiGalleryPage() {
   const { t } = useLanguage()
@@ -189,7 +179,7 @@ export default function PeethadhipathiGalleryPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const { language } = useLanguage()
 
-  const activeHtmlDescription = biographyData[language]?.[`swami${activeSwamiIndex + 1}`] || ""
+  const activeHtmlDescription = biographies[language]?.[`swami${activeSwamiIndex + 1}`] || ""
 
 
   const nextSwami = () => {
@@ -229,126 +219,106 @@ export default function PeethadhipathiGalleryPage() {
         <div className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-amber-950 via-black to-neutral-950">
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 pt-24 pb-16">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSwami.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7 }}
-                className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-              >
-                {/* Text Content */}
-                <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                  >
-                    <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-950/40 backdrop-blur-md shadow-[0_0_15px_rgba(245,158,11,0.1)]">
-                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                      <p className="text-amber-200 font-medium tracking-widest uppercase text-xs">
-                        {activeSwami.period === "Successor" ? "Successor Designate" : activeSwami.period}
-                      </p>
-                    </div>
-
-                    <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-lg">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-500">
-                        {activeSwami.name}
-                      </span>
-                    </h1>
-
-                    <div className="h-1.5 w-32 bg-gradient-to-r from-amber-500 via-amber-300 to-transparent rounded-full mx-auto lg:mx-0 mb-8 opacity-80" />
-
-                    <p className="text-amber-200/80 text-lg font-medium mb-4 tracking-wide">
-                      {activeSwami.title}
+            <div
+              key={activeSwami.id}
+              className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+            >
+              {/* Text Content */}
+              <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+                <div className="mt-0">
+                  <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-950/40 backdrop-blur-md shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    <p className="text-amber-200 font-medium tracking-widest uppercase text-xs">
+                      {activeSwami.period === "Successor" ? "Successor Designate" : activeSwami.period}
                     </p>
+                  </div>
 
-                    <div className="min-h-[100px] mb-8">
-                      <div
-                        className="text-stone-300 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto lg:mx-0 tracking-wide line-clamp-3 opacity-80"
-                        dangerouslySetInnerHTML={{ __html: activeHtmlDescription.replace(/<[^>]*>?/gm, ' ') }}
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-lg">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-500">
+                      {activeSwami.name}
+                    </span>
+                  </h1>
+
+                  <div className="h-1.5 w-32 bg-gradient-to-r from-amber-500 via-amber-300 to-transparent rounded-full mx-auto lg:mx-0 mb-8 opacity-80" />
+
+                  <p className="text-amber-200/80 text-lg font-medium mb-4 tracking-wide">
+                    {activeSwami.title}
+                  </p>
+
+                  <div className="min-h-[100px] mb-8">
+                    <div
+                      className="text-stone-300 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto lg:mx-0 tracking-wide line-clamp-3 opacity-80"
+                      dangerouslySetInnerHTML={{ __html: activeHtmlDescription.replace(/<[^>]*>?/gm, ' ') }}
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      const storySection = document.getElementById('story-section');
+                      storySection?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors uppercase text-sm font-bold tracking-widest border-b border-amber-500/50 pb-1 hover:border-amber-400 mb-8"
+                  >
+                    Read Story <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Navigation Controls */}
+                <div className="flex items-center gap-6">
+                  <button
+                    onClick={prevSwami}
+                    className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
+                  >
+                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform text-amber-400" />
+                    <span className="text-sm font-medium uppercase tracking-wider">Previous</span>
+                  </button>
+
+                  <div className="h-8 w-px bg-amber-500/20" />
+
+                  <button
+                    onClick={nextSwami}
+                    className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
+                  >
+                    <span className="text-sm font-medium uppercase tracking-wider">Next</span>
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-amber-400" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Swami Image Frame */}
+              <div className="relative flex justify-center lg:justify-end perspective-1000">
+                <div className="relative z-10 w-full max-w-md mx-auto lg:mx-0">
+                  {/* Golden Glow Behind */}
+                  <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full scale-90 lg:scale-100 animate-pulse" />
+
+                  {/* The Frame Container */}
+                  <div className="relative aspect-[3/4] rounded-t-[10rem] rounded-b-[3rem] p-4 bg-gradient-to-b from-amber-200/20 via-amber-500/10 to-transparent backdrop-blur-sm border border-amber-200/30 shadow-2xl overflow-hidden group">
+
+                    {/* Inner Border Structure */}
+                    <div className="absolute inset-0 rounded-t-[10rem] rounded-b-[3rem] border-2 border-amber-300/20 pointer-events-none" />
+
+                    {/* Image Container */}
+                    <div className="relative w-full h-full rounded-t-[9rem] rounded-b-[2rem] overflow-hidden bg-stone-900/80 shadow-inner">
+                      <Image
+                        src={activeSwami.image}
+                        alt={activeSwami.name}
+                        fill
+                        className={`object-cover ${activeSwami.imagePosition} transition-transform duration-1000 group-hover:scale-105`}
+                        priority
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
+
+                      {/* Overlay Gradient for Text Readability - Keep it minimal */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                     </div>
 
-                    <button
-                      onClick={() => {
-                        const storySection = document.getElementById('story-section');
-                        storySection?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors uppercase text-sm font-bold tracking-widest border-b border-amber-500/50 pb-1 hover:border-amber-400 mb-8"
-                    >
-                      Read Story <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </motion.div>
-
-                  {/* Navigation Controls */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="flex items-center gap-6"
-                  >
-                    <button
-                      onClick={prevSwami}
-                      className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
-                    >
-                      <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform text-amber-400" />
-                      <span className="text-sm font-medium uppercase tracking-wider">Previous</span>
-                    </button>
-
-                    <div className="h-8 w-px bg-amber-500/20" />
-
-                    <button
-                      onClick={nextSwami}
-                      className="group flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/30 text-amber-100 hover:bg-amber-900/40 hover:border-amber-400/60 transition-all duration-300 active:scale-95 backdrop-blur-sm"
-                    >
-                      <span className="text-sm font-medium uppercase tracking-wider">Next</span>
-                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-amber-400" />
-                    </button>
-                  </motion.div>
+                    {/* Ornate Frame Details */}
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-16 border-t-2 border-amber-400/60 rounded-full opacity-70" />
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[80%] h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
+                  </div>
                 </div>
-
-                {/* Swami Image Frame */}
-                <div className="relative flex justify-center lg:justify-end perspective-1000">
-                  <motion.div
-                    className="relative z-10 w-full max-w-md mx-auto lg:mx-0"
-                    initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  >
-                    {/* Golden Glow Behind */}
-                    <div className="absolute inset-0 bg-amber-500/20 blur-[80px] rounded-full scale-90 lg:scale-100 animate-pulse" />
-
-                    {/* The Frame Container */}
-                    <div className="relative aspect-[3/4] rounded-t-[10rem] rounded-b-[3rem] p-4 bg-gradient-to-b from-amber-200/20 via-amber-500/10 to-transparent backdrop-blur-sm border border-amber-200/30 shadow-2xl overflow-hidden group">
-
-                      {/* Inner Border Structure */}
-                      <div className="absolute inset-0 rounded-t-[10rem] rounded-b-[3rem] border-2 border-amber-300/20 pointer-events-none" />
-
-                      {/* Image Container */}
-                      <div className="relative w-full h-full rounded-t-[9rem] rounded-b-[2rem] overflow-hidden bg-stone-900/80 shadow-inner">
-                        <Image
-                          src={activeSwami.image}
-                          alt={activeSwami.name}
-                          fill
-                          className={`object-cover ${activeSwami.imagePosition} transition-transform duration-1000 group-hover:scale-105`}
-                          priority
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-
-                        {/* Overlay Gradient for Text Readability - Keep it minimal */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-                      </div>
-
-                      {/* Ornate Frame Details */}
-                      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-16 border-t-2 border-amber-400/60 rounded-full opacity-70" />
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[80%] h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent" />
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            </div>
 
             {/* Pagination Dots (Mobile/Tablet friendly interaction indication) */}
             <div className="flex justify-center gap-3 mt-12 lg:hidden">
@@ -375,7 +345,7 @@ export default function PeethadhipathiGalleryPage() {
           <div className="absolute -top-16 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-stone-50" />
 
           <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
-            <FadeUp key={activeSwami.id}>
+            <div key={activeSwami.id}>
               {/* Story Section */}
               <section id="story-section" className="mb-16 md:mb-24 scroll-mt-32">
                 <div className="flex items-center gap-4 mb-8">
@@ -401,11 +371,8 @@ export default function PeethadhipathiGalleryPage() {
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                   {activeSwami.gallery.map((photo, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: idx * 0.1 }}
                       className={`relative overflow-hidden rounded-xl cursor-pointer group bg-neutral-100 border border-neutral-200 shadow-sm hover:shadow-md transition-all ${idx === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
                         }`}
                       onClick={() => openLightbox(idx)}
@@ -426,7 +393,7 @@ export default function PeethadhipathiGalleryPage() {
                           <ZoomIn className="w-6 h-6 text-amber-900" />
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -440,18 +407,15 @@ export default function PeethadhipathiGalleryPage() {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   {activeSwami.contributions.map((contribution, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: idx * 0.08 }}
                       className="flex gap-4 items-start p-5 bg-white rounded-xl shadow-sm border border-amber-100/50 hover:shadow-lg hover:border-amber-200 transition-all duration-300 group"
                     >
                       <span className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-amber-100 to-amber-50 text-amber-800 flex items-center justify-center text-sm font-bold border border-amber-200 group-hover:from-amber-500 group-hover:to-amber-600 group-hover:text-white group-hover:border-amber-500 transition-all duration-300">
                         {idx + 1}
                       </span>
                       <span className="text-neutral-700 text-lg leading-relaxed font-medium pt-1.5">{contribution}</span>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -501,7 +465,7 @@ export default function PeethadhipathiGalleryPage() {
                   ))}
                 </div>
               </section>
-            </FadeUp>
+            </div>
 
             {/* Back to Parampara */}
             <div className="mt-16 text-center">
@@ -582,7 +546,7 @@ export default function PeethadhipathiGalleryPage() {
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
+      </main >
       <SiteFooter />
     </>
   )

@@ -10,17 +10,7 @@ import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
 import { FadeUp } from "@/components/animate-on-scroll"
 import { useLanguage } from "@/lib/language-context"
-import bioEn from "@/lib/data/biographies_en.json"
-import bioHi from "@/lib/data/biographies_hi.json"
-import bioTa from "@/lib/data/biographies_ta.json"
-import bioTe from "@/lib/data/biographies_te.json"
-
-const biographyData: Record<string, Record<string, string>> = {
-  en: bioEn,
-  hi: bioHi,
-  ta: bioTa,
-  te: bioTe,
-}
+import { biographies } from "@/lib/data/biographies"
 
 export default function ParamparaPage() {
   const { t } = useLanguage()
@@ -36,7 +26,7 @@ export default function ParamparaPage() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   const { language } = useLanguage()
-  const biographies = biographyData[language] || {}
+  const langBiographies = biographies[language] || {}
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id)
@@ -242,7 +232,7 @@ export default function ParamparaPage() {
                                     <span className="font-semibold text-amber-900 block mb-2">{t("parampara.read_full_history")}:</span>
                                     <div
                                       className="space-y-4"
-                                      dangerouslySetInnerHTML={{ __html: biographies[`swami${guru.id}`] }}
+                                      dangerouslySetInnerHTML={{ __html: langBiographies[`swami${guru.id}`] }}
                                     />
                                   </div>
                                   <div className="text-xs text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
