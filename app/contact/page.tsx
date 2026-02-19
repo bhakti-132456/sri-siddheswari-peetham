@@ -69,8 +69,8 @@ export default function ContactPage() {
             <aside className="space-y-4">
               <div className="overflow-hidden rounded-xl border">
                 <Image
-                  src="/sri-siddheswari-peetham-courtallam-entrance.jpg"
-                  alt="Sri Siddheswari Peetham entrance"
+                  src="/courtallam-temple-gopuram-and-peetham-campus.png"
+                  alt="Sri Siddheswari Peetham campus"
                   width={800}
                   height={220}
                   className="h-44 w-full object-cover"
@@ -152,8 +152,8 @@ export default function ContactPage() {
 
               <div className="overflow-hidden rounded-xl border">
                 <Image
-                  src="/map-of-courtallam-tamil-nadu.jpg"
-                  alt="Map for Courtallam, Tamil Nadu"
+                  src="/temple-timings-and-pooja-schedule.png"
+                  alt="Temple timings and pooja schedule"
                   width={800}
                   height={220}
                   className="h-44 w-full object-cover"
