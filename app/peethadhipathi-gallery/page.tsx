@@ -30,12 +30,7 @@ export default function PeethadhipathiGalleryPage() {
         "/mounaswami/mouna-swami-tapas.jpg",
         "/mounaswami/mouna-swami-seated.jpg",
         "/mounaswami/mouna-swami-procession.jpg",
-        "/mounaswami/027c04c0-9f7a-4cff-b9a0-0feb5ca994a5.jpg",
-        "/mounaswami/38b3e8b3-df35-4701-9cbc-087ccdb232e1.jpg",
-        "/mounaswami/8b550ed6-17cd-4024-9ad7-a51bc40e537f.jpg",
-        "/mounaswami/8c79684b-8279-4321-8049-dc358ece56e2.jpg",
         "/mounaswami/mounaswami.png",
-        "/mounaswami/portait hero.png",
       ],
       description: t("swami1.long_description"),
       contributions: [
@@ -58,8 +53,6 @@ export default function PeethadhipathiGalleryPage() {
       gallery: [
         "/vimalananda/vimalananda-bharati-portrait.jpg",
         "/vimalananda/vimalananda-bharati-statue.jpg",
-        "/vimalananda/81dbe0ff-e0ab-4187-bec8-21abc1c89799.jpg",
-        "/vimalananda/b1fbcf01-904c-4d8e-b304-9e3fddcae8a7.jpg",
       ],
       description: t("swami2.long_description"),
       contributions: [
@@ -80,7 +73,6 @@ export default function PeethadhipathiGalleryPage() {
         "/trivikrama-ramananda/trivikrama-ramananda-standing.jpg",
         "/trivikrama-ramananda/trivikrama-ramananda-puja.jpg",
         "/trivikrama-ramananda/trivikrama-ramananda-official.jpg",
-        "/trivikrama-ramananda/trivikramananda.jpg",
       ],
       description: t("swami3.long_description"),
       contributions: [
@@ -100,8 +92,6 @@ export default function PeethadhipathiGalleryPage() {
       gallery: [
         "/sivachidananda/siva-chidananda-standing.jpg",
         "/sivachidananda/siva-chidananda-seated.jpg",
-        "/sivachidananda/WhatsApp Image 2025-11-04 at 12.21.34.jpeg",
-        "/sivachidananda/ce286934-2601-429a-8d59-102582f7d6fd.jpg",
         "/sivachidananda/siva-chidananda-bharati.png",
       ],
       description: t("swami4.long_description"),
@@ -155,11 +145,7 @@ export default function PeethadhipathiGalleryPage() {
       gallery: [
         "/datteswarananda/datteshwarananda-final.jpg",
         "/datteswarananda/datteshwarananda-standing.jpg",
-        "/datteswarananda/datteshwarananda-blessing.jpg",
         "/datteswarananda/datteshwarananda-throne.jpg",
-        "/datteswarananda/dattaswami-2.jpg",
-        "/datteswarananda/dattaswami-3.jpg",
-        "/datteswarananda/dattaswami-4.jpg",
       ],
       description: t("swami6.long_description"),
       contributions: [
